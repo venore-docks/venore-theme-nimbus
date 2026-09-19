@@ -62,12 +62,18 @@ export function SidebarLeftSlot({
         // não está na lista de propriedades de ui-motion-emphasis, então px-5→px-3 trocava
         // instantaneamente enquanto a largura do <aside> ainda levava 300ms pra terminar,
         // deslocando o ícone antes do fim da transição). Só `width` anima.
-        "relative flex h-full w-full flex-col px-5 py-6 text-foreground shadow-float lg:w-(--sidebar-width-expanded) lg:shrink-0 lg:border-r lg:shadow-none ui-motion-emphasis",
+        //
+        // Cópia deste tema: Nimbus posiciona a sidebar à DIREITA (Shell.tsx) — a borda fica do
+        // lado esquerdo (voltada pro conteúdo), espelhada em relação ao Venore Slime.
+        "relative flex h-full w-full flex-col px-5 py-6 text-foreground shadow-float lg:w-(--sidebar-width-expanded) lg:shrink-0 lg:border-l lg:shadow-none ui-motion-emphasis",
         isAdmin ? "border-ring bg-(image:--sidebar-bg-admin)" : "border-border bg-(image:--sidebar-bg)",
         collapsed && "lg:w-(--sidebar-width-collapsed)",
       )}
     >
-      <div className="absolute top-4 right-0 z-10 hidden translate-x-1/2 lg:block">
+      {/* Botão de colapso espelhado: pra sidebar à direita, ele flutua no lado ESQUERDO do
+          painel (voltado pro conteúdo) — por isso `left-0 -translate-x-1/2`, e os chevrons
+          invertidos (expandir cresce pra esquerda, colapsar encolhe pra direita). */}
+      <div className="absolute top-4 left-0 z-10 hidden -translate-x-1/2 lg:block">
         <button
           type="button"
           onClick={handleToggleCollapsed}
@@ -76,9 +82,9 @@ export function SidebarLeftSlot({
           className="flex size-11 items-center justify-center rounded-full border border-border bg-card text-foreground shadow-panel ui-motion-base outline-none hover:bg-muted hover:border-ring active:border-ring focus-visible:ring-2 focus-visible:ring-ring"
         >
           {collapsed ? (
-            <ChevronRight className="size-4" aria-hidden="true" />
-          ) : (
             <ChevronLeft className="size-4" aria-hidden="true" />
+          ) : (
+            <ChevronRight className="size-4" aria-hidden="true" />
           )}
         </button>
       </div>

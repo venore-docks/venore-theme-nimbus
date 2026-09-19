@@ -4,23 +4,17 @@ import { FooterSlot } from "./FooterSlot";
 import { ContentSlot } from "./ContentSlot";
 import { SidebarLeftSlot } from "./SidebarLeftSlot";
 
-// Único export que o contrato de tema exige (docs/themes/shell-contract.md — Abordagem A): dono
-// da árvore/arranjo entre as regiões estruturais. Header em cima; abaixo, SidebarLeft e uma
-// coluna de conteúdo lado a lado dentro de um `flex` — essa árvore morava em
-// `(platform)/layout.tsx` antes desta sessão; migrou pra cá porque quem decide arranjo agora é
-// sempre o tema, nunca `platform/` (docs/venore-docks.md — "Contrato de slot"). Header/Footer/
-// Content/SidebarLeft continuam existindo como componentes internos próprios do Venore Slime —
-// outro tema não precisa nomear as próprias peças internas assim, só precisa exportar um `Shell`
-// que aceite `ThemeShellProps`.
+// Assimetria orgânica deliberada: a navegação fica à DIREITA em vez de à esquerda (quebra a
+// convenção "sidebar à esquerda" do Venore Slime/Aurora), coerente com a identidade "neutros
+// elevados, orgânico" do Nimbus. Header em cima, cobrindo as duas colunas. SidebarLeftSlot é o
+// mesmo componente do Venore Slime por dentro (só consome tokens), mas a CÓPIA deste tema tem
+// borda/botão de colapso/chevrons espelhados pro lado direito (ver SidebarLeftSlot.tsx) — sem
+// isso a borda e o botão flutuante ficariam no lado errado do painel.
 //
 // Footer mora DENTRO da coluna de conteúdo (abaixo de ContentSlot), não como irmão do `flex`
-// externo (correção desta sessão — paridade com o protótipo venore-docks,
-// platform-frame.tsx:281-297, onde PlatformFooter é filho da mesma coluna que `<main>`, nunca
-// solto na `<div className="grid...">` ao lado da sidebar). Colocar Footer fora da coluna fazia
-// ele esticar de ponta a ponta por baixo da sidebar; com Footer dentro da coluna, o `flex` externo
-// (align-items: stretch, default) estica SidebarLeftSlot pra acompanhar a altura de
-// Content+Footer somados — a sidebar termina exatamente onde o footer termina, nunca por cima ou
-// por baixo dele.
+// externo — o `flex` externo (align-items: stretch, default) estica a SidebarLeftSlot pra
+// acompanhar a altura de Content+Footer somados, então ela termina exatamente onde o footer
+// termina, nunca por cima ou por baixo dele.
 export function Shell({
   header,
   footer,
@@ -35,7 +29,6 @@ export function Shell({
     <>
       <HeaderSlot {...header} />
       <div className="flex flex-1">
-        <SidebarLeftSlot {...sidebarLeft} />
         <div className="flex min-w-0 flex-1 flex-col">
           <ContentSlot
             sidebarContextualEnabled={sidebarContextualEnabled}
@@ -47,6 +40,7 @@ export function Shell({
           </ContentSlot>
           <FooterSlot {...footer} />
         </div>
+        <SidebarLeftSlot {...sidebarLeft} />
       </div>
     </>
   );
