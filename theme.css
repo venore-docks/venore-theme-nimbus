@@ -1,0 +1,210 @@
+/* Venore Nimbus — tema de neutros elevados e orgânicos (pesquisa de tendências 2026: stone/
+   oatmeal/clay substituindo branco puro e contraste agressivo). Paleta terracota (clay) sobre
+   base aveia quente, cantos generosos, motion mais lento e gentil, espaçamento respirado — tom
+   editorial/acolhedor em vez de utilitário.
+
+   [data-theme="nimbus"] no <html> ativa o bloco base; .dark também vive no <html> (nunca
+   aninhado), por isso a variante escura é o seletor composto abaixo. */
+
+[data-theme="nimbus"] {
+  /* raio — generoso, sem virar pílula. */
+  --radius: 0.9rem;
+  --radius-shell: 0rem;
+  --radius-panel: 1.1rem;
+  --ui-radius-scale-sm: 0.6;
+  --ui-radius-scale-md: 1;
+  --ui-radius-scale-lg: 1.6;
+  --ui-radius-scale-xl: 2.2;
+  --ui-radius-scale-2xl: 2.8;
+  --ui-radius-scale-3xl: 3.4;
+  --ui-radius-scale-4xl: 4;
+
+  --ui-tracking-caps: 0.12em;
+
+  /* motion — gentil, sem pressa. */
+  --ui-motion-fast: 160ms;
+  --ui-motion-base: 260ms;
+  --ui-motion-slow: 380ms;
+  --ui-ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --ui-ease-emphasis: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* tipografia — respirada, editorial. */
+  --ui-font-weight-body: 400;
+  --ui-font-weight-medium: 500;
+  --ui-font-weight-semibold: 600;
+  --ui-font-weight-display: 600;
+  --ui-leading-copy: 1.65;
+  --ui-leading-display: 1.2;
+  --ui-tracking-copy: 0em;
+  --ui-tracking-display: -0.01em;
+
+  /* controles — confortáveis. */
+  --ui-control-height-xs: 1.75rem;
+  --ui-control-height-sm: 2.25rem;
+  --ui-control-height-md: 2.5rem;
+  --ui-control-height-lg: 2.75rem;
+  --ui-control-padding-x: 1.25rem;
+  --ui-button-padding-scale-xs: 0.55;
+  --ui-button-padding-scale-sm: 0.78;
+  --ui-button-padding-scale-lg: 2;
+  --ui-button-gap: 0.625rem;
+
+  --ui-panel-padding-x: 1.75rem;
+  --ui-panel-padding-y: 1.75rem;
+
+  /* base shadcn — aveia quente em vez de branco puro, terracota (clay) como marca. */
+  --background: oklch(0.965 0.012 75);
+  --foreground: oklch(0.28 0.02 50);
+  --card: oklch(0.985 0.008 75);
+  --card-foreground: oklch(0.28 0.02 50);
+  --popover: oklch(0.99 0.006 75);
+  --popover-foreground: oklch(0.28 0.02 50);
+  --primary: oklch(0.55 0.11 45);
+  --primary-foreground: oklch(0.98 0.01 45);
+  --secondary: oklch(0.93 0.015 75);
+  --secondary-foreground: oklch(0.3 0.02 50);
+  --muted: oklch(0.93 0.015 75);
+  --muted-foreground: oklch(0.5 0.02 60);
+  --accent: oklch(0.85 0.05 130);
+  --accent-foreground: oklch(0.28 0.03 130);
+  --destructive: oklch(0.55 0.19 25);
+  --destructive-foreground: oklch(0.98 0.01 25);
+  --border: oklch(0.88 0.015 70);
+  --input: oklch(0.86 0.015 70);
+  --ring: oklch(0.55 0.09 45);
+
+  --shadow-color: oklch(0.6 0.02 60);
+  --shadow-color-strong: oklch(0.4 0.02 55);
+  --shadow-color-soft: color-mix(in oklch, var(--shadow-color) 20%, transparent);
+  --shadow-color-strong-soft: color-mix(in oklch, var(--shadow-color-strong) 18%, transparent);
+  --shadow-panel: 0 1px 2px -1px var(--shadow-color-strong-soft), 0 10px 26px -14px var(--shadow-color-soft);
+  --shadow-float: 0 2px 6px -2px var(--shadow-color-strong-soft), 0 16px 34px -14px var(--shadow-color-strong-soft);
+  --shadow-header: 0 1px 0 0 var(--border);
+
+  /* sidebar — larga, à vontade. */
+  --sidebar-width-expanded: 18rem;
+  --sidebar-width-collapsed: 5.25rem;
+
+  --sidebar-bg-start: oklch(0.955 0.014 75);
+  --sidebar-bg-end: oklch(0.935 0.02 72);
+  --sidebar-bg: linear-gradient(180deg, var(--sidebar-bg-start) 0%, var(--sidebar-bg-end) 100%);
+  --sidebar-bg-admin-start: oklch(0.34 0.04 45);
+  --sidebar-bg-admin-end: oklch(0.28 0.04 45);
+  --sidebar-bg-admin: linear-gradient(180deg, var(--sidebar-bg-admin-start) 0%, var(--sidebar-bg-admin-end) 100%);
+
+  --warning: oklch(0.62 0.14 75);
+  --warning-foreground: oklch(0.98 0.01 75);
+  --warning-soft: color-mix(in oklch, var(--warning) 12%, var(--card));
+  --warning-border: color-mix(in oklch, var(--warning) 28%, var(--border));
+
+  --success: oklch(0.55 0.11 140);
+  --success-foreground: oklch(0.98 0.01 140);
+  --success-soft: color-mix(in oklch, var(--success) 12%, var(--card));
+  --success-border: color-mix(in oklch, var(--success) 28%, var(--border));
+
+  --chart-1: var(--primary);
+  --chart-2: oklch(0.58 0.1 200);
+  --chart-3: var(--muted-foreground);
+  --chart-4: var(--warning);
+  --chart-5: var(--destructive);
+  --chart-6: oklch(0.56 0.14 235);
+  --chart-7: oklch(0.6 0.15 350);
+
+  --overlay-foreground: oklch(1 0 0);
+
+  /* superfície "apresentação" — sempre a versão escura do tema, frozen (só bloco base). */
+  --presentation-ground: oklch(0.2 0.012 55);
+  --presentation-card: oklch(0.24 0.014 55);
+  --presentation-border: oklch(0.34 0.02 55);
+  --presentation-foreground: oklch(0.93 0.012 75);
+  --presentation-muted-foreground: oklch(0.75 0.016 65);
+  --presentation-success: oklch(0.66 0.13 140);
+  --presentation-success-soft: color-mix(in oklch, var(--presentation-success) 16%, var(--presentation-card));
+  --presentation-success-border: color-mix(in oklch, var(--presentation-success) 34%, var(--presentation-border));
+  --presentation-warning: oklch(0.72 0.14 75);
+  --presentation-warning-soft: color-mix(in oklch, var(--presentation-warning) 16%, var(--presentation-card));
+  --presentation-warning-border: color-mix(in oklch, var(--presentation-warning) 34%, var(--presentation-border));
+  --presentation-destructive: oklch(0.6 0.2 25);
+  --presentation-renewed: oklch(0.58 0.14 235);
+  --presentation-new: oklch(0.6 0.15 350);
+
+  --app-bg-start: oklch(0.975 0.01 75);
+  --app-bg-mid: oklch(0.965 0.013 74);
+  --app-bg-end: oklch(0.955 0.016 72);
+  --app-background: linear-gradient(180deg, var(--app-bg-start) 0%, var(--app-bg-mid) 55%, var(--app-bg-end) 100%);
+
+  --header-bg: oklch(0.985 0.008 75);
+  --header-chip-bg: color-mix(in oklch, var(--muted) 55%, var(--card));
+  --header-avatar-bg: color-mix(in oklch, var(--accent) 30%, var(--card));
+  --header-avatar-fg: var(--foreground);
+  --header-border-subtle: var(--border);
+  --header-border-strong: var(--ring);
+}
+
+[data-theme="nimbus"].dark {
+  /* base shadcn — carvão quente (mesma família de matiz, nunca cinza frio genérico). */
+  --background: oklch(0.22 0.012 55);
+  --foreground: oklch(0.92 0.012 75);
+  --card: oklch(0.26 0.014 55);
+  --card-foreground: oklch(0.94 0.01 75);
+  --popover: oklch(0.24 0.014 55);
+  --popover-foreground: oklch(0.94 0.01 75);
+  --primary: oklch(0.68 0.12 48);
+  --primary-foreground: oklch(0.18 0.02 45);
+  --secondary: oklch(0.3 0.014 55);
+  --secondary-foreground: oklch(0.94 0.01 75);
+  --muted: oklch(0.3 0.014 55);
+  --muted-foreground: oklch(0.68 0.016 65);
+  --accent: oklch(0.38 0.05 130);
+  --accent-foreground: oklch(0.92 0.02 130);
+  --destructive: oklch(0.62 0.2 25);
+  --destructive-foreground: oklch(0.97 0.01 25);
+  --border: oklch(0.36 0.016 55);
+  --input: oklch(0.34 0.016 55);
+  --ring: oklch(0.66 0.11 48);
+
+  --shadow-color: oklch(0.03 0 0);
+  --shadow-color-strong: oklch(0 0 0);
+  --shadow-color-soft: color-mix(in oklch, var(--shadow-color) 44%, transparent);
+  --shadow-color-strong-soft: color-mix(in oklch, var(--shadow-color-strong) 40%, transparent);
+  --shadow-panel: 0 1px 2px -1px var(--shadow-color-strong-soft), 0 12px 28px -14px var(--shadow-color-soft);
+  --shadow-float: 0 2px 6px -2px var(--shadow-color-strong-soft), 0 18px 38px -16px var(--shadow-color-strong-soft);
+  --shadow-header: 0 1px 0 0 var(--border);
+
+  --sidebar-bg-start: oklch(0.2 0.013 55);
+  --sidebar-bg-end: oklch(0.175 0.014 52);
+  --sidebar-bg: linear-gradient(180deg, var(--sidebar-bg-start) 0%, var(--sidebar-bg-end) 100%);
+  --sidebar-bg-admin-start: oklch(0.32 0.05 45);
+  --sidebar-bg-admin-end: oklch(0.26 0.05 45);
+  --sidebar-bg-admin: linear-gradient(180deg, var(--sidebar-bg-admin-start) 0%, var(--sidebar-bg-admin-end) 100%);
+
+  --warning: oklch(0.72 0.14 75);
+  --warning-foreground: oklch(0.18 0.02 75);
+  --warning-soft: color-mix(in oklch, var(--warning) 16%, var(--card));
+  --warning-border: color-mix(in oklch, var(--warning) 32%, var(--border));
+
+  --success: oklch(0.68 0.13 140);
+  --success-foreground: oklch(0.17 0.02 140);
+  --success-soft: color-mix(in oklch, var(--success) 16%, var(--card));
+  --success-border: color-mix(in oklch, var(--success) 32%, var(--border));
+
+  --chart-1: var(--primary);
+  --chart-2: oklch(0.62 0.11 200);
+  --chart-3: var(--muted-foreground);
+  --chart-4: var(--warning);
+  --chart-5: var(--destructive);
+  --chart-6: oklch(0.6 0.15 235);
+  --chart-7: oklch(0.64 0.16 350);
+
+  --app-bg-start: oklch(0.2 0.013 55);
+  --app-bg-mid: oklch(0.19 0.013 54);
+  --app-bg-end: oklch(0.175 0.014 52);
+  --app-background: linear-gradient(180deg, var(--app-bg-start) 0%, var(--app-bg-mid) 55%, var(--app-bg-end) 100%);
+
+  --header-bg: oklch(0.24 0.014 55);
+  --header-chip-bg: color-mix(in oklch, var(--muted) 55%, var(--card));
+  --header-avatar-bg: color-mix(in oklch, var(--accent) 30%, var(--card));
+  --header-avatar-fg: var(--foreground);
+  --header-border-subtle: var(--border);
+  --header-border-strong: var(--ring);
+}
