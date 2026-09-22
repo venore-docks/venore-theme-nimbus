@@ -1,10 +1,12 @@
 {
   "name": "@venore/theme-nimbus",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Nimbus — tema do Venore Docks com neutros elevados e orgânicos: aveia quente, acento terracota, cantos generosos, tom editorial.",
   "private": true,
   "type": "module",
-  "sideEffects": ["*.css"],
+  "sideEffects": [
+    "*.css"
+  ],
   "exports": {
     ".": "./index.ts",
     "./manifest": "./manifest.ts",
